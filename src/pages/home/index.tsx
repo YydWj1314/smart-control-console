@@ -8,6 +8,9 @@ import {
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+import NavLeft from "../../components/navLeft";
+import MyBreadcrumb from "../../components/breadcrumb";
+import MyHeader from "../../components/header";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -50,41 +53,28 @@ const App: React.FC = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
+      {/* sider */}
       <Sider
         collapsible
         collapsed={collapsed}
         onCollapse={(value) => setCollapsed(value)}
       >
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          defaultSelectedKeys={["1"]}
-          mode="inline"
-          items={items}
-        />
+        <NavLeft />
       </Sider>
+      
+      {/* main content */}
       <Layout>
-        <Header style={{ padding: 0, background: colorBgContainer }} />
+        <Header style={{ padding: 0 }}>
+          <MyHeader/>
+        </Header>
         <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb
-            style={{ margin: "16px 0" }}
-            items={[{ title: "User" }, { title: "Bill" }]}
-          />
-          <div
-            style={{
-              padding: 24,
-              minHeight: 360,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            Bill is a cat.
-          </div>
+          <MyBreadcrumb />
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
+
     </Layout>
   );
 };
