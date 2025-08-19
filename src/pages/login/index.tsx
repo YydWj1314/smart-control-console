@@ -26,10 +26,11 @@ function Login() {
       .then(async (values) => {
         setLoading(true); // set button loading state
         const {
-          data: { token }, // values = {username:"", password:""}
+          data: { token, username }, // values = {username:"", password:""}
         } = await login(values); // async-sending a request, waiting for fullfilled/rejected
         setLoading(false);
         dispatch(setToken(token)); // Save token to Redux and session
+        sessionStorage.setItem("username", username); // sage username to local session
         navigate("/", { replace: true }); // login successfully, navigate to homepage, rejct return
       })
       .catch((err) => {

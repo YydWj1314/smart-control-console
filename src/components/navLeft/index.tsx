@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 import icons from "./iconList";
+import logo from "../../assets/logo.png";
+import "./index.scss";
 
 type MenuItem = Required<MenuProps>["items"][number];
 
@@ -17,6 +19,7 @@ function NavLeft() {
   const [menuData, setMenuData] = useState<MenuItem[]>([]);
 
   // Once load the page, get menu data
+  // use effct cannot defined as async
   useEffect(() => {
     configMenu();
   }, []);
@@ -40,9 +43,13 @@ function NavLeft() {
   }
 
   return (
-    <div>
+    <div className="navLeft">
+      <div className="logo">
+        <img src={logo} alt="" width={18} />
+        <h1>智慧园区</h1>
+      </div>
       <Menu
-        defaultSelectedKeys={["2"]}
+        defaultSelectedKeys={["/dashboard"]}
         mode="inline"
         theme="dark"
         items={menuData}

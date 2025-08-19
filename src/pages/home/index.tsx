@@ -61,11 +61,18 @@ const App: React.FC = () => {
       >
         <NavLeft />
       </Sider>
-      
+
       {/* main content */}
       <Layout>
-        <Header style={{ padding: 0 }}>
-          <MyHeader/>
+        <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+            textAlign: "right",
+            paddingRight: "20px",
+          }}
+        >
+          <MyHeader />
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <MyBreadcrumb />
@@ -74,7 +81,6 @@ const App: React.FC = () => {
           Ant Design ©{new Date().getFullYear()} Created by Ant UED
         </Footer>
       </Layout>
-
     </Layout>
   );
 };
